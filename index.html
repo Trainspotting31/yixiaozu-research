@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医小租 调研报告 | 医疗器械租赁平台</title>
+<style>
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --ink: #2c2c2c;
+  --ink-2: #5a6169;
+  --ink-3: #9aa0a6;
+  --accent: #6E8899;
+  --accent-warm: #C4956E;
+  --line: #e5e1d8;
+  --warn-bg: #fdf6ec;
+  --warn-line: #e8d5b8;
+  --warn-ink: #8a6a3a;
+  --radius: 12px;
+  --serif: 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, serif;
+  --sans: 'Noto Sans SC Subset', 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 48px 20px 64px; }
+
+.masthead {
+  text-align: center;
+  padding: 40px 0 32px;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 36px;
+}
+.masthead .label {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.masthead h1 {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.masthead .sub {
+  margin-top: 14px;
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.masthead .meta {
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+.tldr {
+  background: linear-gradient(135deg, #faf8f4, #f4f0e8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+.tldr .tldr-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent-warm);
+  margin-bottom: 10px;
+}
+.tldr p { font-size: 15px; color: var(--ink-2); line-height: 1.9; }
+.tldr strong { color: var(--ink); }
+
+.section { margin-bottom: 40px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.section-head .num {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.section-head h2 { font-family: var(--serif); font-size: 19px; font-weight: 600; }
+
+p.body { font-size: 14.5px; color: var(--ink-2); line-height: 1.9; margin-bottom: 14px; }
+p.body strong { color: var(--ink); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: 11px;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: #eef3f6;
+  color: #4a6a7a;
+}
+.badge-warm { background: #f5efe8; color: #8a6a4a; }
+.card ul { list-style: none; }
+.card li {
+  font-size: 14px;
+  color: var(--ink-2);
+  padding: 5px 0 5px 18px;
+  position: relative;
+  line-height: 1.75;
+}
+.card li::before {
+  content: "·";
+  position: absolute;
+  left: 6px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.card li strong { color: var(--ink); }
+
+.kv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.kv {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+.kv .k {
+  font-size: 11.5px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.kv .v {
+  font-size: 14.5px;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.warn {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-bottom: 16px;
+}
+.warn h3 {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  color: var(--warn-ink);
+  margin-bottom: 10px;
+}
+.warn ol { padding-left: 20px; }
+.warn li {
+  font-size: 14px;
+  color: #7a5f38;
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+.warn li strong { color: var(--warn-ink); }
+
+.verdict {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+.verdict h3 {
+  font-family: var(--serif);
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.verdict p { font-size: 14.5px; color: var(--ink-2); line-height: 1.9; margin-bottom: 10px; }
+.verdict p strong { color: var(--ink); }
+
+.ref {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  line-height: 1.9;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.ref a { color: var(--accent); text-decoration: none; }
+.ref a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .wrap { padding: 24px 14px 48px; }
+  .masthead h1 { font-size: 26px; }
+  .kv-grid { grid-template-columns: 1fr; }
+  .card, .tldr, .warn, .verdict { padding: 16px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="label">Platform Research Report</div>
+    <h1>医小租 调研报告</h1>
+    <div class="sub">面向 C 端家庭的一站式医疗器械租赁平台</div>
+    <div class="meta">调研日期：2026-10-10 · 数据来源：官网、App Store 官方描述、公开工商信息、行业行情</div>
+  </header>
+
+  <div class="tldr">
+    <div class="tldr-label">一句话定位</div>
+    <p><strong>医小租 = 面向 C 端家庭用户的医疗器械租赁平台</strong>，主打「信用免押金」，租医院同款家用医疗设备（制氧机、胎心仪、黄疸仪、产后修复仪、轮椅等），顺丰送货上门。运营主体是<strong>医小租（南京）医疗科技有限公司</strong>，总部在南京。</p>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><span class="num">01</span><h2>公司基本信息</h2></div>
+    <div class="kv-grid">
+      <div class="kv"><div class="k">运营主体</div><div class="v">医小租（南京）医疗科技有限公司</div></div>
+      <div class="kv"><div class="k">总部地点</div><div class="v">南京</div></div>
+      <div class="kv"><div class="k">业务资质</div><div class="v">医疗器械租赁 · 医疗器械互联网信息服务</div></div>
+      <div class="kv"><div class="k">科技认定</div><div class="v">2025 年国家级科技型中小企业</div></div>
+      <div class="kv"><div class="k">服务载体</div><div class="v">iOS App · 微信小程序 · 支付宝小程序 · 微信公众号</div></div>
+      <div class="kv"><div class="k">商务邮箱</div><div class="v">account@dasiku.com.cn</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num">02</span><h2>核心业务模式</h2></div>
+    <p class="body"><strong>「以租代买」的消费级医疗设备电商</strong>，流程为：平台自购设备库存 → 用户在线下单 → 芝麻信用 / 微信支付分达标免押金 → 顺丰配送上门 → 到期归还或选择买断。</p>
+    <div class="card">
+      <h3>模式要点</h3>
+      <ul>
+        <li><strong>免押金门槛</strong>：靠信用分替代押金，降低「买一台上万元制氧机只用三个月」的决策门槛</li>
+        <li><strong>医院同款定位</strong>：胎心仪、黄疸仪均主打「三甲医院同款」，蹭医疗级信任感</li>
+        <li><strong>服务增值</strong>：胎心监护提供 7×24 小时专家在线报告解读，不止租设备还租「专业判断」</li>
+        <li><strong>配送体验</strong>：顺丰极速达，母婴场景强调「当天送到」</li>
+        <li><strong>自研技术背书</strong>：持有「胎心监护 AI 实时分析预警平台」「盆底肌康复 AI 矫正系统」等软件著作权</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num">03</span><h2>主营品类</h2></div>
+    <div class="card">
+      <h3>母婴线 <span class="badge badge-warm">公司特色 / 起家业务</span></h3>
+      <ul>
+        <li><strong>胎心监护仪</strong> — 医院同款，居家监测胎儿情况，避免孕妇反复跑医院</li>
+        <li><strong>新生儿黄疸检测仪</strong> — 三甲同款，居家观测黄疸变化趋势</li>
+        <li><strong>产后修复仪 / 盆底肌康复仪</strong> — 对标「动辄几万的月子中心」，免押体验高端产后恢复设备</li>
+        <li><strong>祛黄蓝光毯</strong> — 新生儿照蓝光辅助</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>老人 / 慢病线</h3>
+      <ul>
+        <li><strong>制氧机</strong> — 家用 / 医用 / 便携 / 高原全品类（覆盖家庭保健、孕妇吸氧、老人医用、高原旅行场景）</li>
+        <li><strong>心电监护仪 · 雾化器</strong></li>
+        <li><strong>康复理疗</strong> — 电动轮椅、护理床、远红外线理疗仪、中频理疗仪、头/腰/腿部按摩仪</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>合作品牌（App Store 官方描述）</h3>
+      <ul>
+        <li>医贝诺 · 澜渟 · 大悦 · 鱼跃 · 海尔 · 帕瑞 PARI · 欧姆龙 · 科司德 · 倍益康 · 魔方瘦 · 麻麻康 等</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num">04</span><h2>本次调研未能确认的信息</h2></div>
+    <div class="warn">
+      <h3>⚠️ 关键缺口（诚实交代，非结论）</h3>
+      <ol>
+        <li><strong>具体租金价格查不到</strong> — 官网和 App Store 描述均无公开价目表，需进 App 才能看到实时定价。<br><strong>行业同类参考值</strong>（来自淘宝租赁商家及同类平台「日日租」公开数据，非医小租定价）：便携制氧机日租约 30–85 元/天，月租约 174–500 元/月区间。</li>
+        <li><strong>融资 / 创始人信息未检索到</strong> — 公开渠道无融资记录，与南京当地医疗科技创投新闻无关联。可能未融资或未公开。</li>
+        <li><strong>用户口碑几乎搜不到</strong> — 知乎、小红书、黑猫投诉均未检索到成规模的医小租用户评价（正面负面都没有）。这既可能是平台声量小，也可能是搜索覆盖不足，<strong>不作为「口碑好」或「口碑差」的证据</strong>。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num">05</span><h2>判断：商业逻辑与对你的参考价值</h2></div>
+    <div class="verdict">
+      <h3>商业逻辑：成立</h3>
+      <p>家庭短期使用医疗设备（新生儿黄疸监测半个月、术后康复三个月）确实「买不如租」，信用免押 + 顺丰配送的组合击中了真实痛点。母婴线差异化清晰——医院同款 + 专家解读，比纯硬件租赁多了专业服务层。</p>
+      <h3>但对你的参考价值：有限</h3>
+      <p>医小租是 <strong>To C 消费租赁电商</strong>（卖给个人家庭，靠信用免押走量）。你的辅具租赁业务是 <strong>To B / To 机构</strong> 路线——养老院采购必须要合格证 + 发票（此前轮椅调研的负结论：白牌无证产品进不了机构渠道）。两者的供应链、客单价、信任机制完全不重叠。</p>
+      <p><strong>唯一值得注意的方向</strong>：如果你想做的是「面向老人家庭的线上租赁零售」（类似医小租的老人线），那它是一个可对标的商业样本——但那是另一个生意，不是现有辅具租赁业务的延伸。</p>
+    </div>
+  </section>
+
+  <div class="ref">
+    <strong>数据来源：</strong>
+    <a href="http://www.yixiaozu-group.com/index.php/opt/youshi">医小租官网 · 企业优势</a> ·
+    <a href="https://apps.apple.com/cn/app/id1550415462">App Store 官方描述（医小租）</a> ·
+    淘宝便携式制氧机租赁商家公开价目（行业参考）·
+    <a href="https://www.rrzu.com/item/469745">同类平台「日日租」公开价目（行业参考）</a><br><br>
+    报告生成：Hermes Agent · 2026-10-10 · 所有价格数据均标注来源，未确认项已如实列出
+  </div>
+
+</div>
+</body>
+</html>
